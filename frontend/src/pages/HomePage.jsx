@@ -1,5 +1,9 @@
 import React from 'react'
 import About from '../components/About'
+import Gallery from '../components/Gallery'
+import Service from '../components/Service'
+import Client from '../components/Client'
+import Contact from '../components/Contact'
 
 function HomePage() {
   return (
@@ -57,8 +61,12 @@ function HomePage() {
          </div>
       </div>
     <About/>
+    <Gallery/>
+    <Service/>
+    <Client/>
+    <Contact/>
     </>
   )
 }
 
-export default HomePage
+export default HomePage;

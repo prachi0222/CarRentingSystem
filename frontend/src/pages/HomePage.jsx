@@ -1,9 +1,9 @@
 import React from 'react'
 import About from '../components/About'
 import Service from '../components/Service'
-import Contact from '../components/Contact'
 import Testimonials from '../components/Testimonials'
 import Gallery from '../components/Gallery'
+import Contactpage from './Contactpage'
 
 function HomePage() {
   return (
@@ -63,8 +63,9 @@ function HomePage() {
     <About/>
     <Gallery/>
     <Service/>
+    
     <Testimonials/>
-    <Contact/>
+    <Contactpage/>
     </>
   )
 }

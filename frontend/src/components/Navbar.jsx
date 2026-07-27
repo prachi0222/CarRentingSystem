@@ -30,6 +30,9 @@ function Navbar() {
                      <li className="nav-item">
                         <a className="nav-link" href="contact">Contact</a>
                      </li>
+                     <li className="nav-item">
+                        <a className="nav-link" href="login">Login</a>
+                     </li>
                   </ul>
                   <form className="form-inline my-2 my-lg-0">
                   </form>

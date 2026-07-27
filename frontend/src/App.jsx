@@ -8,6 +8,9 @@ import Service from './components/Service'
 import Gallery from './components/Gallery'
 import Client from './components/Client'
 import Contact from './components/Contact'
+import Login from './components/Login'
+import Register from './components/Register'
+import ForgotPassword from './components/ForgotPassword'
  export default function App() {
   return (
    <BrowserRouter>
@@ -19,6 +22,9 @@ import Contact from './components/Contact'
     <Route path='gallery' element={<Gallery/>}/>
     <Route path='client' element={<Client/>}/>
     <Route path='contact' element={<Contact/>}/>
+    <Route path='login' element={<Login/>}/>
+    <Route path='register' element={<Register/>}/>
+    <Route path='forgot-password' element={<ForgotPassword/>}/>
    </Routes>
    <Footer/>
    </BrowserRouter>

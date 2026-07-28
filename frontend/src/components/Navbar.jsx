@@ -3,14 +3,15 @@ import { Link, NavLink } from 'react-router-dom'
 import Dropdown from "react-bootstrap/Dropdown";
 
 function Navbar() {
+
    let [settingData, setSettingData] = useState({
       siteName: import.meta.env.VITE_APP_SITE_NAME,
       address: import.meta.env.VITE_APP_SITE_ADDRESS,
       map: import.meta.env.VITE_APP_SITE_MAP,
       email: import.meta.env.VITE_APP_SUPPORT_EMAIL,
       phone: import.meta.env.VITE_APP_SUPPORT_PHONE
+ } )
 
-   })
    return (
       <>
          <div className="header_section">
@@ -90,7 +91,6 @@ function Navbar() {
 
       </>
 
-   )
-}
+   )}
 
 export default Navbar

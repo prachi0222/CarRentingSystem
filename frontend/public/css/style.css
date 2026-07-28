@@ -1114,3 +1114,459 @@ textarea#comment::placeholder {
 .margin_top90 {
     margin-top: 90px;
 }
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-angle-right:before {
+    content: "\f105";
+}
+.fa-angle-left:before {
+    content: "\f104";
+}/*=========================================================
+LOGIN POPUP
+=========================================================*/
+
+.login_page{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.65);
+    z-index:9999;
+    padding:25px;
+    overflow-y:auto;
+}
+
+/*=========================================================
+POPUP CONTAINER
+=========================================================*/
+
+.login_container{
+    width:100%;
+    max-width:900px;
+    height:85vh;
+    max-height:720px;
+
+    display:flex;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+    animation:popup .35s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/*=========================================================
+LEFT IMAGE
+=========================================================*/
+
+.login_image{
+    width:45%;
+    background:#fe5b29;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:35px;
+}
+
+.login_image img{
+    width:100%;
+    max-width:320px;
+    object-fit:contain;
+}
+
+/*=========================================================
+RIGHT SIDE
+=========================================================*/
+
+.login_box{
+    width:55%;
+    padding:35px;
+
+    overflow-y:auto;
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* Custom Scroll */
+
+.login_box::-webkit-scrollbar{
+    width:6px;
+}
+
+.login_box::-webkit-scrollbar-thumb{
+    background:#fe5b29;
+    border-radius:10px;
+}
+
+.login_box::-webkit-scrollbar-track{
+    background:#f5f5f5;
+}
+
+/*=========================================================
+TITLE
+=========================================================*/
+
+.login_title{
+    font-size:34px;
+    font-weight:700;
+    color:#363636;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.login_subtitle{
+    text-align:center;
+    color:#777;
+    font-size:15px;
+    margin-bottom:25px;
+}
+
+/*=========================================================
+FORM
+=========================================================*/
+
+.login_form_group{
+    margin-bottom:16px;
+}
+
+.login_form_group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:15px;
+    font-weight:600;
+}
+
+.login_form_group input{
+    width:100%;
+    height:48px;
+
+    border:1px solid #ddd;
+    border-radius:6px;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.login_form_group input:focus{
+    outline:none;
+    border-color:#fe5b29;
+    box-shadow:0 0 0 3px rgba(254,91,41,.15);
+}
+
+.input_error{
+    border-color:#e53935 !important;
+}
+
+.error_message{
+    margin:5px 0 0;
+    font-size:13px;
+    color:#e53935;
+    font-weight:500;
+}
+
+/*=========================================================
+PASSWORD
+=========================================================*/
+
+.password_field{
+    position:relative;
+}
+
+.password_field input{
+    padding-right:70px;
+}
+
+.toggle_password{
+    position:absolute;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#fe5b29;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+}
+
+/*=========================================================
+REMEMBER
+=========================================================*/
+
+.login_options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.remember_me{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+}
+
+.login_options a{
+    color:#fe5b29;
+    text-decoration:none;
+}
+
+.login_options a:hover{
+    color:#363636;
+}
+
+/*=========================================================
+BUTTON
+=========================================================*/
+
+.login_button{
+    width:100%;
+    height:48px;
+
+    border:none;
+    border-radius:6px;
+
+    background:#fe5b29;
+    color:#fff;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.login_button:hover{
+    background:#363636;
+}
+
+/*=========================================================
+BOTTOM LINKS
+=========================================================*/
+
+.register_text{
+    margin-top:22px;
+    text-align:center;
+    color:#666;
+}
+
+.register_text a{
+    color:#fe5b29;
+    font-weight:600;
+}
+
+.back_home{
+    margin-top:15px;
+    text-align:center;
+}
+
+.back_home a{
+    color:#666;
+    text-decoration:none;
+}
+
+.back_home a:hover{
+    color:#fe5b29;
+}
+
+/*=========================================================
+LAPTOP
+=========================================================*/
+
+@media(max-width:1200px){
+
+    .login_container{
+        max-width:850px;
+        height:82vh;
+    }
+
+    .login_image{
+        width:42%;
+    }
+
+    .login_box{
+        width:58%;
+    }
+
+}
+
+/*=========================================================
+TABLET
+=========================================================*/
+
+@media(max-width:768px){
+
+    .login_page{
+        padding:20px;
+        align-items:flex-start;
+    }
+
+    .login_container{
+        flex-direction:column;
+        width:100%;
+        max-width:500px;
+        height:auto;
+        max-height:95vh;
+    }
+
+    .login_image{
+        width:100%;
+        padding:25px;
+    }
+
+    .login_image img{
+        max-width:220px;
+    }
+
+    .login_box{
+        width:100%;
+        max-height:65vh;
+        padding:25px;
+    }
+
+    .login_title{
+        font-size:30px;
+    }
+
+}
+/*=========================================================
+MOBILE
+=========================================================*/
+@media (max-width: 576px) {
+
+    .login_page {
+        padding: 15px;
+        align-items: center;
+        overflow-y: auto;
+    }
+
+    .login_container {
+        width: 100%;
+        max-width: 360px;
+        flex-direction: column;
+        height: auto;
+        max-height: 95vh;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .login_image {
+        width: 100%;
+        padding: 15px;
+        flex: none;
+    }
+
+    .login_image img {
+        width: 100%;
+        max-width: 170px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .login_box {
+        width: 100%;
+        padding: 20px;
+        overflow-y: auto;
+        max-height: calc(95vh - 180px);
+    }
+
+    .login_title {
+        font-size: 26px;
+    }
+
+    .login_subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .login_form_group {
+        margin-bottom: 14px;
+    }
+
+    .login_form_group input {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .login_options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .login_button {
+        height: 45px;
+        font-size: 15px;
+    }
+}
+
+/*=========================================================
+SMALL MOBILE
+=========================================================*/
+@media (max-width: 375px) {
+
+    .login_page {
+        padding: 10px;
+    }
+
+    .login_container {
+        max-width: 100%;
+        max-height: 96vh;
+    }
+
+    .login_image {
+        padding: 12px;
+    }
+
+    .login_image img {
+        max-width: 140px;
+    }
+
+    .login_box {
+        padding: 15px;
+        max-height: calc(96vh - 150px);
+    }
+
+    .login_title {
+        font-size: 22px;
+    }
+
+    .login_subtitle {
+        font-size: 13px;
+    }
+
+    .login_form_group input,
+    .login_button {
+        height: 42px;
+    }
+}

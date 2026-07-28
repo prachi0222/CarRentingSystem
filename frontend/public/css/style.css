@@ -215,7 +215,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-color: #0e0c06;
+    background-color: #6c757d;
     height: auto;
     background-size: 100%;
 }
@@ -223,7 +223,7 @@ button {
 .header_bg {
     width: 100%;
     float: left;
-    background: #1d1d1d
+    background: #1d1d1d;
     height: auto;
     background-size: 100%;
 }

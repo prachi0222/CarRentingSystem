@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Client = () => {
+const Testimonials = () => {
   return (
     <>
     {/* client section start */}
@@ -156,4 +156,4 @@ const Client = () => {
   )
 }
 
-export default Client
+export default Testimonials

@@ -1,60 +1,187 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const settingData = {
+    siteName: import.meta.env.VITE_APP_SITE_NAME,
+    address: import.meta.env.VITE_APP_SITE_ADDRESS,
+    map: import.meta.env.VITE_APP_SITE_MAP,
+    email: import.meta.env.VITE_APP_SUPPORT_EMAIL,
+    phone: import.meta.env.VITE_APP_SUPPORT_PHONE,
+  };
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loadUser = () => {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      setUser(storedUser);
+    };
+
+    loadUser();
+
+    window.addEventListener("userChanged", loadUser);
+
+    return () => {
+      window.removeEventListener("userChanged", loadUser);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
+  };
+
   return (
-     <>
+    <>
+      {/* Header */}
       <div className="header_section">
-         <div className="container">
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-               <a className="navbar-brand"href="/"><img src="images/logo.png"/></a>
-               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span className="navbar-toggler-icon"></span>
-               </button>
-               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul className="navbar-nav ml-auto">
-                     <li className="nav-item">
-                        <a className="nav-link" href="/">Home</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="about">About</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="services">Services</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="gallery">Vehicles</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="client">Client</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="contact">Contact</a>
-                     </li>
-                     <li className="nav-item">
-                        <a className="nav-link" href="login">Login</a>
-                     </li>
-                  </ul>
-                  <form className="form-inline my-2 my-lg-0">
-                  </form>
-               </div>
-            </nav>
-         </div>
-      </div>
+        <div className="container">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 
+            <Link className="navbar-brand" to="/">
+              <i className="fa-solid fa-car"></i> {settingData.siteName}
+            </Link>
 
-      <div className="call_text_main">
-         <div className="container">
-            <div className="call_taital">
-               <div className="call_text"><a href="#"><i className="fa fa-map-marker" aria-hidden="true"></i><span className="padding_left_15">Location</span></a></div>
-               <div className="call_text"><a href="#"><i className="fa fa-phone" aria-hidden="true"></i><span className="padding_left_15">(+71) 8522369417</span></a></div>
-               <div className="call_text"><a href="#"><i className="fa fa-envelope" aria-hidden="true"></i><span className="padding_left_15">demo@gmail.com</span></a></div>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav ml-auto">
+
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/">Home</NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/about">About</NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/services">Services</NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/features">Vehicles</NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/contact">Contact</NavLink>
+                </li>
+
+                <li className="nav-item">
+                  {!user ? (
+                    <NavLink className="nav-link" to="/login">
+                      Login
+                    </NavLink>
+                  ) : (
+                    <Dropdown align="end">
+
+                      <Dropdown.Toggle
+                        variant="secondary"
+                        id="profile-dropdown"
+                      >
+                        <i className="fa-solid fa-user"></i>{" "}
+                        {user.name}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+
+                        <Dropdown.Header>
+                          <strong>{user.name}</strong>
+                          <br />
+                          <small>{user.email}</small>
+                        </Dropdown.Header>
+
+                        <Dropdown.Divider />
+
+                        <Dropdown.Item as={Link} to="/profile">
+                          <i className="fa-solid fa-user"></i> My Profile
+                        </Dropdown.Item>
+
+                        <Dropdown.Item
+                          as={Link}
+                          to="/profile?option=bookings"
+                        >
+                          <i className="fa-solid fa-calendar-check"></i> My Bookings
+                        </Dropdown.Item>
+
+                        <Dropdown.Item as={Link} to="/admin">
+                          <i className="fa-solid fa-gauge"></i> Admin Dashboard
+                        </Dropdown.Item>
+
+                        <Dropdown.Divider />
+
+                        <Dropdown.Item onClick={handleLogout}>
+                          <i className="fa-solid fa-right-from-bracket"></i> Logout
+                        </Dropdown.Item>
+
+                      </Dropdown.Menu>
+
+                    </Dropdown>
+                  )}
+                </li>
+
+              </ul>
             </div>
-         </div>
+          </nav>
+        </div>
       </div>
 
-      </>
-      
-  )
+      {/* Contact Bar */}
+      <div className="call_text_main">
+        <div className="container">
+          <div className="call_taital">
+
+            <div className="call_text">
+              <a
+                href={settingData.map}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-solid fa-location-dot"></i>
+                <span className="padding_left_15">
+                  {settingData.address}
+                </span>
+              </a>
+            </div>
+
+            <div className="call_text">
+              <a href={`tel:${settingData.phone}`}>
+                <i className="fa-solid fa-phone"></i>
+                <span className="padding_left_15">
+                  {settingData.phone}
+                </span>
+              </a>
+            </div>
+
+            <div className="call_text">
+              <a href={`mailto:${settingData.email}`}>
+                <i className="fa-solid fa-envelope"></i>
+                <span className="padding_left_15">
+                  {settingData.email}
+                </span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;

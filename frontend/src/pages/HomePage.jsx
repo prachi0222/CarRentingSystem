@@ -63,7 +63,6 @@ function HomePage() {
     <About/>
     <Gallery/>
     <Service/>
-    
     <Testimonials/>
     <Contactpage/>
     </>

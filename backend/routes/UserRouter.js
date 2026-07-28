@@ -1,8 +1,11 @@
-const UserRouter=require("express").Router()
-const{
-  createRecord
-}=require("../controllers/UserController")
+const UserRouter = require("express").Router()
+const {
+        createRecord,
+        getAllRecord
+      } = require("../controllers/UserController")
 
-UserRouter.post("",createRecord)
+UserRouter.get("/", getAllRecord)
+UserRouter.post("/signup", createRecord)
 
-module.exports=UserRouter
+
+module.exports = UserRouter

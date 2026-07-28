@@ -61,9 +61,26 @@ async function createRecord(req, res) {
         })
     }
 }
+async function getAllRecord(req,res){
+     try {
+        let data=await User.find().sort({_id:-1})
+        res.send({
+            status:"Done",
+            data:data
+        })
+     } catch (error) {
+        console.log(error);
 
+        res.status(500).send({
+            status:"Fail",
+            reason:"Internal Server Error"
+        })
+        
+     }
+}
 
 
 module.exports = {
-    createRecord: createRecord
+    createRecord: createRecord,
+    getAllRecord:getAllRecord
 }

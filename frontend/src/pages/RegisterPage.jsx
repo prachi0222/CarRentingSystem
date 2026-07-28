@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Register() {
+export default function RegisterPage() {
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");s
@@ -42,14 +44,29 @@ export default function Register() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      alert("Registration successful!");
+
+      // Save user in localStorage
+      const user = {
+        name: fullName,
+        email: email,
+      };
+
+      localStorage.setItem("user", JSON.stringify(user));
+
+// Notify Navbar immediately
+window.dispatchEvent(new Event("userChanged"));
+
+alert("Registration Successful!");
+
+navigate("/");
     }
   };
 
   return (
     <div className="login_page">
       <div className="login_container">
-        {/* LEFT SIDE - IMAGE */}
+
+        {/* LEFT SIDE */}
         <div className="login_image">
           <img
             src="images/about-img.png"
@@ -57,17 +74,22 @@ export default function Register() {
           />
         </div>
 
-        {/* RIGHT SIDE - REGISTER FORM */}
+        {/* RIGHT SIDE */}
         <div className="login_box">
-          <h1 className="login_title">Register</h1>
+
+          <h1 className="login_title">
+            Register
+          </h1>
 
           <p className="login_subtitle">
             Create your account and start renting cars.
           </p>
 
           <form onSubmit={handleSubmit}>
-            {/* FULL NAME */}
+
+            {/* Full Name */}
             <div className="login_form_group">
+
               <label>Full Name</label>
 
               <input
@@ -83,10 +105,12 @@ export default function Register() {
                   {errors.fullName}
                 </p>
               )}
+
             </div>
 
-            {/* EMAIL */}
+            {/* Email */}
             <div className="login_form_group">
+
               <label>Email</label>
 
               <input
@@ -102,13 +126,16 @@ export default function Register() {
                   {errors.email}
                 </p>
               )}
+
             </div>
 
-            {/* PASSWORD */}
+            {/* Password */}
             <div className="login_form_group">
+
               <label>Password</label>
 
               <div className="password_field">
+
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
@@ -123,6 +150,7 @@ export default function Register() {
                 >
                   {showPassword ? "Hide" : "Show"}
                 </span>
+
               </div>
 
               {errors.password && (
@@ -130,13 +158,16 @@ export default function Register() {
                   {errors.password}
                 </p>
               )}
+
             </div>
 
-            {/* CONFIRM PASSWORD */}
+            {/* Confirm Password */}
             <div className="login_form_group">
+
               <label>Confirm Password</label>
 
               <div className="password_field">
+
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm your password"
@@ -153,6 +184,7 @@ export default function Register() {
                 >
                   {showConfirmPassword ? "Hide" : "Show"}
                 </span>
+
               </div>
 
               {errors.confirmPassword && (
@@ -160,18 +192,20 @@ export default function Register() {
                   {errors.confirmPassword}
                 </p>
               )}
+
             </div>
 
-            {/* REGISTER BUTTON */}
+            {/* Register Button */}
             <button
               type="submit"
               className="login_button"
             >
               Register
             </button>
+
           </form>
 
-          {/* LOGIN LINK */}
+          {/* Login Link */}
           <p className="register_text">
             Already have an account?{" "}
             <Link to="/login">
@@ -179,13 +213,15 @@ export default function Register() {
             </Link>
           </p>
 
-          {/* BACK HOME */}
+          {/* Back Home */}
           <div className="back_home">
             <Link to="/">
               ← Back to Home
             </Link>
           </div>
+
         </div>
+
       </div>
     </div>
   );

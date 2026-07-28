@@ -3,36 +3,29 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
-
-import Service from './components/Service'
 import AboutPage from './pages/AboutPage'
-import TestimonialsPage from './pages/TestimonialsPage'
-import GalleryPage from './pages/GalleryPage'
 import Contactpage from './pages/Contactpage'
-
-
-import Login from './components/Login'
-import Register from './components/Register'
-import ForgotPassword from './components/ForgotPassword'
+import GalleryPage from './pages/GalleryPage'
+import ServicePage from './pages/ServicePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import TestimonialsPage from './pages/TestimonialsPage'
  export default function App() {
   return (
    <BrowserRouter>
    <Navbar/>
    <Routes>
-
-    <Route path='' element={<HomePage/>}/>
+    <Route path='/' element={<HomePage/>}/>
     <Route path='/about' element={<AboutPage/>}/>
-    <Route path='/services' element={<Service/>}/>
-    <Route path='/gallery' element={<GalleryPage/>}/>
+    <Route path='/services' element={<ServicePage/>}/>
+    <Route path='/features' element={<GalleryPage/>}/>
     <Route path='/testimonials' element={<TestimonialsPage/>}/>
     <Route path='/contact' element={<Contactpage/>}/>
-
-   
-    <Route path='/login' element={<Login/>}/>
-    <Route path='/register' element={<Register/>}/>
-    <Route path='/forgot-password' element={<ForgotPassword/>}/>
-
-   </Routes>
+    <Route path='/login' element={<LoginPage/>}/>
+    <Route path='/register' element={<RegisterPage/>}/>
+    <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
+   </Routes>  
    <Footer/>
    </BrowserRouter>
   )

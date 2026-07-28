@@ -2,7 +2,7 @@ import React from 'react'
 
 import Gallery from '../components/Gallery'
 
-function GalleryPage() {
+export default function GalleryPage() {
   return (
     <>
       <Gallery/>
@@ -10,4 +10,9 @@ function GalleryPage() {
   )
 }
 
-export default GalleryPage;
+
+// <<<<<<< HEAD
+// export default GalleryPage;
+// =======
+// export default GalleryPage
+// >>>>>>> origin/main

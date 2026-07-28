@@ -43,9 +43,11 @@ function Navbar() {
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 
-            <Link className="navbar-brand" to="/">
-              <i className="fa-solid fa-car"></i> {settingData.siteName}
-            </Link>
+          <Link className="navbar-brand" to="/">
+          <i className="fa-solid fa-car"></i>{" "}
+          <span className="brand_text">Car Rental Hub</span>{" "}
+          {settingData.siteName}
+          </Link>
 
             <button
               className="navbar-toggler"
@@ -56,6 +58,7 @@ function Navbar() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
+              
               <span className="navbar-toggler-icon"></span>
             </button>
 
@@ -94,19 +97,11 @@ function Navbar() {
                         variant="secondary"
                         id="profile-dropdown"
                       >
-                        <i className="fa-solid fa-user"></i>{" "}
-                        {user.name}
+                        <i className="fa-solid fa-user"></i>
+                        
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-
-                        <Dropdown.Header>
-                          <strong>{user.name}</strong>
-                          <br />
-                          <small>{user.email}</small>
-                        </Dropdown.Header>
-
-                        <Dropdown.Divider />
 
                         <Dropdown.Item as={Link} to="/profile">
                           <i className="fa-solid fa-user"></i> My Profile
@@ -147,13 +142,15 @@ function Navbar() {
           <div className="call_taital">
 
             <div className="call_text">
+            
               <a
                 href={settingData.map}
                 target="_blank"
                 rel="noreferrer"
+                
               >
                 <i className="fa-solid fa-location-dot"></i>
-                <span className="padding_left_15">
+                <span className="padding_left_15">Location
                   {settingData.address}
                 </span>
               </a>
@@ -163,7 +160,7 @@ function Navbar() {
               <a href={`tel:${settingData.phone}`}>
                 <i className="fa-solid fa-phone"></i>
                 <span className="padding_left_15">
-                  {settingData.phone}
+                  + 91 9027026211
                 </span>
               </a>
             </div>
@@ -172,7 +169,7 @@ function Navbar() {
               <a href={`mailto:${settingData.email}`}>
                 <i className="fa-solid fa-envelope"></i>
                 <span className="padding_left_15">
-                  {settingData.email}
+                  gitixachauhan@gmail.com
                 </span>
               </a>
             </div>

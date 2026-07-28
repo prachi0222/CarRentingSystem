@@ -5,6 +5,10 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:[true,"User Name is Required"]
     },
+    username:{
+        type:String,
+        required:[true,"Username is Required"]
+    },
 
     email:{
         type:String,
@@ -20,14 +24,24 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:[true,"User Password is Required"]
     },
+    passwordReset:{
+        otp:String,
+        otpExpire:Date
+    },
     role:{
         type:String,
-        default:"User"
+        enum:["Customer","Admin"],
+        default:"Customer"
+    },
+    status:{
+        type:Boolean,
+        default:true
     },
     
     
 
-})
+},
+{timestamps:true})
 const User=mongoose.model("User",UserSchema)
 
 module.exports=User

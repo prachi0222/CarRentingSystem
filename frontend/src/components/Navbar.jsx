@@ -43,11 +43,11 @@ function Navbar() {
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
 
-          <Link className="navbar-brand" to="/">
-          <i className="fa-solid fa-car"></i>{" "}
-          <span className="brand_text">Car Rental Hub</span>{" "}
-          {settingData.siteName}
-          </Link>
+            <Link className="navbar-brand" to="/">
+              <i className="fa-solid fa-car"></i>
+              <span className="brand_text">{settingData.siteName}</span>
+
+            </Link>
 
             <button
               className="navbar-toggler"
@@ -58,7 +58,7 @@ function Navbar() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              
+
               <span className="navbar-toggler-icon"></span>
             </button>
 
@@ -98,7 +98,7 @@ function Navbar() {
                         id="profile-dropdown"
                       >
                         <i className="fa-solid fa-user"></i>
-                        
+
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
@@ -142,36 +142,26 @@ function Navbar() {
           <div className="call_taital">
 
             <div className="call_text">
-            
-              <a
-                href={settingData.map}
-                target="_blank"
-                rel="noreferrer"
-                
-              >
-                <i className="fa-solid fa-location-dot"></i>
-                <span className="padding_left_15">Location
-                  {settingData.address}
-                </span>
-              </a>
+
+              <Link target='_blank' rel='noreferrer' to={settingData.map}>
+                <i className="fa-solid fa-location-dot" aria-hidden="true">
+                </i>
+                <span className="padding_left_15">{settingData.address}</span>
+              </Link>
             </div>
 
             <div className="call_text">
-              <a href={`tel:${settingData.phone}`}>
-                <i className="fa-solid fa-phone"></i>
-                <span className="padding_left_15">
-                  + 91 9027026211
-                </span>
-              </a>
+              <Link target='_blank' rel='noreferrer' to={`tel:${settingData.phone}`}>
+                <i className="fa-solid fa-phone" aria-hidden="true"></i>
+                <span className="padding_left_15">{settingData.phone}</span>
+              </Link>
             </div>
 
             <div className="call_text">
-              <a href={`mailto:${settingData.email}`}>
-                <i className="fa-solid fa-envelope"></i>
-                <span className="padding_left_15">
-                  gitixachauhan@gmail.com
-                </span>
-              </a>
+              <Link target='_blank' rel='noreferrer' to={`mailto:${settingData.email}`}>
+                <i className="fa-solid fa-envelope" aria-hidden="true"></i>
+                <span className="padding_left_15">{settingData.email}</span>
+              </Link>
             </div>
 
           </div>

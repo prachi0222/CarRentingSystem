@@ -1,66 +1,130 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from 'axios'
 export default function RegisterPage() {
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");s
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [fullName, setFullName] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+   const [showPassword, setShowPassword] = useState(false);
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [errors, setErrors] = useState({});
+  const [data, setData] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: ""
+  })
+  const [errors, setErrors] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: ""
+  });
 
-  const handleSubmit = (e) => {
+  const getInputData = (e) => {
+  const { name, value } = e.target;
+
+  setData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+
+  setErrors((prev) => ({
+    ...prev,
+    [name]: "",
+  }));
+};
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
 
-    if (!fullName.trim()) {
+    if (!data.fullName.trim()) {
       newErrors.fullName = "Full name is required";
     }
 
-    if (!email.trim()) {
+    if (!data.username.trim()) {
+      newErrors.username = "Username is required";
+    }
+
+    if (!data.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    }
+
+    if (!data.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!/\S+@\S+\.\S+/.test(data.email)) {
       newErrors.email = "Please enter a valid email";
     }
 
-    if (!password) {
+    if (!data.password) {
       newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    } else if (data.password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
     }
 
-    if (!confirmPassword) {
+    if (!data.confirmPassword) {
       newErrors.confirmPassword = "Confirm password is required";
-    } else if (confirmPassword !== password) {
+    } else if (data.confirmPassword !== data.password) {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
     setErrors(newErrors);
 
+    // if (Object.keys(newErrors).length === 0) {
+
+    //       // Save user in localStorage
+    //       const user = {
+    //         name: fullName,
+    //         email: email,
+    //       };
+
+    //       localStorage.setItem("user", JSON.stringify(user));
+
+    // // Notify Navbar immediately
+    // window.dispatchEvent(new Event("userChanged"));
+
+    // alert("Registration Successful!");
+
+    // navigate("/");
+    //}
     if (Object.keys(newErrors).length === 0) {
 
-      // Save user in localStorage
-      const user = {
-        name: fullName,
-        email: email,
-      };
 
-      localStorage.setItem("user", JSON.stringify(user));
-
-// Notify Navbar immediately
-window.dispatchEvent(new Event("userChanged"));
-
-alert("Registration Successful!");
-
-navigate("/");
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/user/signup`,
+          {
+            name: data.fullName,
+            username: data.username,
+            email: data.email,
+            phone: data.phone,
+            password: data.password,
+          }
+        )
+        alert("Registration Successful")
+        navigate("/login")
+      } catch (error) {
+        if (error.response) {
+          setErrors(error.response.data.reason)
+        }
+        else {
+          alert("Server Error")
+        }
+      }
     }
-  };
+  }
 
   return (
     <div className="login_page">
@@ -94,9 +158,10 @@ navigate("/");
 
               <input
                 type="text"
+                name="fullName"
                 placeholder="Enter your name"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                value={data.fullName}
+                onChange={getInputData}
                 className={errors.fullName ? "input_error" : ""}
               />
 
@@ -108,6 +173,25 @@ navigate("/");
 
             </div>
 
+            <div className="login_form_group">
+              <label>Username</label>
+
+              <input
+                type="text"
+                placeholder="Enter username"
+                name="username"
+                value={data.username}
+                onChange={getInputData}
+                className={errors.username ? "input_error" : ""}
+              />
+
+              {errors.username && (
+                <p className="error_message">
+                  {errors.username}
+                </p>
+              )}
+            </div>
+
             {/* Email */}
             <div className="login_form_group">
 
@@ -115,9 +199,10 @@ navigate("/");
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={data.email}
+                onChange={getInputData}
                 className={errors.email ? "input_error" : ""}
               />
 
@@ -127,6 +212,25 @@ navigate("/");
                 </p>
               )}
 
+            </div>
+
+            <div className="login_form_group">
+              <label>Phone</label>
+
+              <input
+                type="text"
+                name="phone"
+                placeholder="Enter phone number"
+                value={data.phone}
+                onChange={getInputData}
+                className={errors.phone ? "input_error" : ""}
+              />
+
+              {errors.phone && (
+                <p className="error_message">
+                  {errors.phone}
+                </p>
+              )}
             </div>
 
             {/* Password */}
@@ -139,8 +243,9 @@ navigate("/");
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  value={data.password}
+                  onChange={getInputData}
                   className={errors.password ? "input_error" : ""}
                 />
 
@@ -171,8 +276,9 @@ navigate("/");
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  name="confirmPassword"
+                  value={data.confirmPassword}
+                  onChange={getInputData}
                   className={errors.confirmPassword ? "input_error" : ""}
                 />
 

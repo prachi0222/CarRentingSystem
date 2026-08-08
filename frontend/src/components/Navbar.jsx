@@ -38,80 +38,140 @@ function Navbar() {
 
   return (
     <>
+      {/* Contact Bar */}
+      <div className="call_text_main">
+        <div className="container">
+          <div className="call_taital">
+            <div className="call_text">
+              <a href={settingData.map} target="_blank" rel="noreferrer">
+                <i className="fa-solid fa-location-dot location_icon"></i>
+                <span className="padding_left_15">{settingData.address}</span>
+              </a>
+            </div>
+
+            <div className="call_text">
+              <a href={`tel:${settingData.phone}`}>
+                <i className="fa-solid fa-phone"></i>
+                <span className="padding_left_15">{settingData.phone}</span>
+              </a>
+            </div>
+
+            <div className="call_text">
+              <a href={`mailto:${settingData.email}`}>
+                <i className="fa-solid fa-envelope"></i>
+                <span className="padding_left_15">{settingData.email}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="header_section">
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-
-          <Link className="navbar-brand" to="/">
-          <i className="fa-solid fa-car"></i>{" "}
-          <span className="brand_text">Car Rental Hub</span>{" "}
-          {settingData.siteName}
-          </Link>
+          <nav className="navbar navbar-expand-lg navbar-dark  bg-light ">
+            <Link className="navbar-brand text-dark fs-bold" to="/">
+              <img src="images/Car-Renting-Logo.png" className="logo_img" />
+              <i className="fa-solid"></i>
+              <span className="font-weight-bold ml-2">
+                {settingData.siteName}
+              </span>
+            </Link>
 
             <button
               className="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              
               <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <ul className="navbar-nav ml-auto">
-
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/">Home</NavLink>
+                  <NavLink
+                    className="nav-link"
+                    to="/"
+                    style={{ color: "#727272" }}
+                  >
+                    Home
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/about">About</NavLink>
+                  <NavLink
+                    className="nav-link"
+                    to="/about"
+                    style={{ color: "#727272" }}
+                  >
+                    About
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/services">Services</NavLink>
+                  <NavLink
+                    className="nav-link"
+                    to="/services"
+                    style={{ color: "#727272" }}
+                  >
+                    Services
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/features">Vehicles</NavLink>
+                  <NavLink
+                    className="nav-link"
+                    to="/features"
+                    style={{ color: "#727272" }}
+                  >
+                    Features
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/contact">Contact</NavLink>
+                  <NavLink
+                    className="nav-link"
+                    to="/contact"
+                    style={{ color: "#727272" }}
+                  >
+                    Contact
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
                   {!user ? (
-                    <NavLink className="nav-link" to="/login">
+                    <NavLink
+                      className="nav-link"
+                      to="/login"
+                      style={{ color: "#727272" }}
+                    >
                       Login
                     </NavLink>
                   ) : (
                     <Dropdown align="end">
-
                       <Dropdown.Toggle
-                        variant="secondary"
                         id="profile-dropdown"
+                        className="menu-toggle border-0 bg-transparent shadow-none p-0"
+                        variant="light"
                       >
-                        <i className="fa-solid fa-user"></i>
-                        
+                        <i className="fa-solid fa-bars fa-xl"></i>
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-
                         <Dropdown.Item as={Link} to="/profile">
                           <i className="fa-solid fa-user"></i> My Profile
                         </Dropdown.Item>
 
-                        <Dropdown.Item
-                          as={Link}
-                          to="/profile?option=bookings"
-                        >
-                          <i className="fa-solid fa-calendar-check"></i> My Bookings
+                        <Dropdown.Item as={Link} to="/profile?option=bookings">
+                          <i className="fa-solid fa-calendar-check"></i> My
+                          Bookings
                         </Dropdown.Item>
 
                         <Dropdown.Item as={Link} to="/admin">
@@ -121,60 +181,16 @@ function Navbar() {
                         <Dropdown.Divider />
 
                         <Dropdown.Item onClick={handleLogout}>
-                          <i className="fa-solid fa-right-from-bracket"></i> Logout
+                          <i className="fa-solid fa-right-from-bracket"></i>{" "}
+                          Logout
                         </Dropdown.Item>
-
                       </Dropdown.Menu>
-
                     </Dropdown>
                   )}
                 </li>
-
               </ul>
             </div>
           </nav>
-        </div>
-      </div>
-
-      {/* Contact Bar */}
-      <div className="call_text_main">
-        <div className="container">
-          <div className="call_taital">
-
-            <div className="call_text">
-            
-              <a
-                href={settingData.map}
-                target="_blank"
-                rel="noreferrer"
-                
-              >
-                <i className="fa-solid fa-location-dot"></i>
-                <span className="padding_left_15">Location
-                  {settingData.address}
-                </span>
-              </a>
-            </div>
-
-            <div className="call_text">
-              <a href={`tel:${settingData.phone}`}>
-                <i className="fa-solid fa-phone"></i>
-                <span className="padding_left_15">
-                  + 91 9027026211
-                </span>
-              </a>
-            </div>
-
-            <div className="call_text">
-              <a href={`mailto:${settingData.email}`}>
-                <i className="fa-solid fa-envelope"></i>
-                <span className="padding_left_15">
-                  gitixachauhan@gmail.com
-                </span>
-              </a>
-            </div>
-
-          </div>
         </div>
       </div>
     </>

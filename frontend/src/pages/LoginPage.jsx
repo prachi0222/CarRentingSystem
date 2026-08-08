@@ -93,14 +93,14 @@ export default function LoginPage() {
       className={errors.password ? "input_error" : ""}
     />
 
-    <span
-      className="toggle_password"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? "Hide" : "Show"}
-    </span>
+<span
+  className="toggle_password"
+  onClick={() => setShowPassword(!showPassword)}
+>
+  <i className={showPassword ? "bi bi-eye" : " bi bi-eye-slash"}></i>
+</span>
   </div>
-
+ 
   {errors.password && (
     <p className="error_message">
       {errors.password}

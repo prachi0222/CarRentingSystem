@@ -17,7 +17,7 @@ function HomePage() {
                      <div className="carousel-inner">
                         <div className="carousel-item active">
                            <div className="banner_taital_main">
-                              <h1 className="banner_taital">Car Rent <br/><span style={{color:"#fe5b29"}}>For You</span></h1>
+                              <h1 className="banner_taital">Car Rent <br/><span style={{color:"#009DFF"}}>For You</span></h1>
                               <p className="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority</p>
                               <div className="btn_main">
                                  <div className="contact_bt"><a href="#">Read More</a></div>
@@ -27,7 +27,7 @@ function HomePage() {
                         </div>
                         <div className="carousel-item">
                            <div className="banner_taital_main">
-                              <h1 className="banner_taital">Car Rent <br/><span style={{color: "#fe5b29"}}>For You</span></h1>
+                              <h1 className="banner_taital">Car Rent <br/><span style={{color: "#009DFF"}}>For You</span></h1>
                               <p className="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority</p>
                               <div className="btn_main">
                                  <div className="contact_bt"><a href="#">Read More</a></div>
@@ -37,7 +37,7 @@ function HomePage() {
                         </div>
                         <div className="carousel-item">
                            <div className="banner_taital_main">
-                              <h1 className="banner_taital">Car Rent <br/><span style={{color: "#fe5b29"}}>For You</span></h1>
+                              <h1 className="banner_taital">Car Rent <br/><span style={{color: "#009DFF"}}>For You</span></h1>
                               <p className="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority</p>
                               <div className="btn_main">
                                  <div className="contact_bt"><a href="#">Read More</a></div>

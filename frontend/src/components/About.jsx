@@ -17,7 +17,7 @@ function About() {
           <div className="col-md-6">
             <div className="about_taital_box">
               <h1 className="about_taital">
-                About <span style={{ color: "#fe5b29" }}>Us</span>
+                About <span style={{ color: "#009DFF" }}>Us</span>
               </h1>
               <p className="about_text">
                 going to use a passage of Lorem Ipsum, you need to be sure there

@@ -215,9 +215,17 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-color: #6c757d;
+    background-color: #fff;
     height: auto;
+    padding: 10px 0;
     background-size: 100%;
+
+    /* Shadow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    /* Optional */
+    position: relative;
+    z-index: 999;
 }
 
 .header_bg {
@@ -239,17 +247,19 @@ button {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0px 20px;
     font-size: 17px;
-    color: #fefefd;
+    color: #727272;
+    font-weight: 600;
     margin: 0px 5px;
 }
 
-.navbar-light .navbar-nav .nav-link:focus,
-.navbar-light .navbar-nav .nav-link:hover {
-    color: #fe5b29;
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    color: #009DFF !important;
 }
-
 
 .navbar-brand {
     margin: 0px;
@@ -259,7 +269,7 @@ button {
 .call_text_main{
     width: 100%;
     float: left;
-    background-color: #fe5b29;
+    background-color: #F5FBFF;
     height: auto;
     padding: 10px 0px;
 }
@@ -279,9 +289,12 @@ button {
 .call_text a {
     width: 100%;
     float: left;
-    color: #ffffff;
+    color: #919191;
     font-size: 16px;
     padding: 0px 20px;
+}
+.call_text i{
+    color: #5DB2FF;
 }
 
 .call_text a:hover {
@@ -300,10 +313,10 @@ button {
 .banner_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
     height: auto;
     background-size: 100%;
-    padding: 200px 0px 160px 0px;
+    padding: 70px 0px 50px 80px;
+    background-color: rgb(232, 234, 240);
 }
 
 .banner_taital_main {
@@ -342,7 +355,7 @@ button {
     width: 100%;
     float: left;
     font-size: 18px;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     color: #fcf8f8;
     text-align: center;
     padding: 10px;
@@ -360,10 +373,9 @@ button {
 }
 
 .banner_img {
-    width: 100%;
-    float: left;
+    width: 100%;  
     text-align: center;
-    display: none;
+    
 }
 
 #banner_slider a.carousel-control-prev {
@@ -387,7 +399,7 @@ button {
     opacity: 1;
     font-size: 30px;
     color: #fcf8f8;
-    background-color: #fe5b29;
+    background-color: #009DFF;
 }
 
 #banner_slider .carousel-control-next:focus,
@@ -452,7 +464,7 @@ button {
     float: left;
     font-size: 18px;
     color: #fcf8f8;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     border-radius: 3px;
     padding: 10px;
     text-align: center;
@@ -540,7 +552,7 @@ span.current {
     float: left;
     font-size: 18px;
     color: #fefefd;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -616,7 +628,7 @@ span.current {
     width: 100%;
     float: left;
     font-size: 18px;
-    color: #fe5b29;
+    color: #009DFF;
     text-align: center;
     margin: 0px;
     font-weight: bold;
@@ -636,7 +648,7 @@ span.current {
     font-size: 16px;
     color: #fefefd;
     text-align: center;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     font-weight: bold;
     padding: 10px;
 }
@@ -683,7 +695,7 @@ span.current {
 .choose_section{
     width: 100%;
     float: left;
-    background-color: #363636;
+    background-color: white;
     height: auto;
     padding: 40px 0px;
 }
@@ -692,7 +704,7 @@ span.current {
     width: 100%;
     float: left;
     font-size: 40px;
-    color: #fefefd;
+    color: black;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -701,6 +713,41 @@ span.current {
     width: 100%;
     float: left;
     padding-top: 40px;
+}
+.carts-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    height: auto;
+}
+
+.cart {
+    cursor: pointer;
+    color: black;
+    background-color: #34aaf3;
+    padding: 20px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: calc((100% - 80px) / 3);
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    background-color: #009DFF;
+}
+
+@media (max-width: 768px) {
+    .cart {
+        width: calc((100% - 40px) / 2);
+    }
+}
+
+@media (max-width: 480px) {
+    .cart {
+        width: 100%;
+    }
 }
 
 .icon_1 {
@@ -812,7 +859,7 @@ span.current {
     opacity: 1;
     font-size: 30px;
     color: #fefefd;
-    background-color: #fa5a29;
+    background-color: #009DFF;
 }
 
 #custom_slider .carousel-control-next:focus,
@@ -847,7 +894,7 @@ span.current {
     width: 100%;
     margin: 0 auto;
     padding: 110px 20px 50px 20px;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     border-top-left-radius: 540px;
     border-top-right-radius: 540px;
     margin-top: 50px;
@@ -903,6 +950,8 @@ textarea#comment.massage-bt::placeholder {
     width: 170px;
     margin: 0 auto;
     text-align: center;
+    border-radius: 5px;
+    border-color: #111111;
 }
 
 .send_bt a {
@@ -910,7 +959,7 @@ textarea#comment.massage-bt::placeholder {
     text-align: center;
     font-size: 16px;
     color: #fefefd;
-    background-color: #fe2929;
+    background-color: #363636;
     padding: 12px;
     margin-top: 20px;
     display: block;
@@ -1011,7 +1060,7 @@ textarea#comment.massage-bt::placeholder {
 }
 
 .social_icon li a:hover {
-    background-color: #fe5b29;
+    background-color: #009DFF;
     color: #ffffff;
 }
 
@@ -1047,7 +1096,7 @@ textarea#comment::placeholder {
     font-size: 16px;
     padding: 8px 0px;
     text-transform: uppercase;
-    background-color: #fe5b29;
+    background-color: #009DFF;
     text-align: center;
     border-radius: 3px;
 }
@@ -1062,15 +1111,19 @@ textarea#comment::placeholder {
     float: left;
 }
 
-.location_text a {
+.location_text li {
     width: 100%;
-    float: left;
-    color: #ffffff;
-    font-size: 16px;
 }
 
-.location_text a:hover {
-    color: #fe5b29;
+.location_text li a {
+    color: #ffffff;
+    font-size: 16px;
+    display: inline-block;
+    width: auto;
+}
+
+.location_text a:hover {    
+    color: #009DFF;
 }
 
 .padding_left_15 {
@@ -1089,6 +1142,7 @@ textarea#comment::placeholder {
     float: left;
     background-color: #363636;
     height: auto;
+    border-top: 1px solid #ffffff;
 }
 
 .copyright_text {
@@ -1106,7 +1160,7 @@ textarea#comment::placeholder {
 }
 
 .copyright_text a:hover {
-    color: #fe5b29;
+    color: #009DFF;
 }
 
 
@@ -1186,7 +1240,7 @@ LEFT IMAGE
 
 .login_image{
     width:45%;
-    background:#fe5b29;
+    background:#009DFF;
 
     display:flex;
     justify-content:center;
@@ -1222,7 +1276,7 @@ RIGHT SIDE
 }
 
 .login_box::-webkit-scrollbar-thumb{
-    background:#fe5b29;
+    background:#009DFF;
     border-radius:10px;
 }
 
@@ -1280,7 +1334,7 @@ FORM
 
 .login_form_group input:focus{
     outline:none;
-    border-color:#fe5b29;
+    border-color:#009DFF;
     box-shadow:0 0 0 3px rgba(254,91,41,.15);
 }
 
@@ -1312,9 +1366,9 @@ PASSWORD
     right:18px;
     top:50%;
     transform:translateY(-50%);
-    color:#fe5b29;
+    color:#009DFF;
     cursor:pointer;
-    font-size:14px;
+    font-size:20px;
     font-weight:600;
 }
 
@@ -1337,7 +1391,7 @@ REMEMBER
 }
 
 .login_options a{
-    color:#fe5b29;
+    color:#009DFF;
     text-decoration:none;
 }
 
@@ -1356,7 +1410,7 @@ BUTTON
     border:none;
     border-radius:6px;
 
-    background:#fe5b29;
+    background:#009DFF;
     color:#fff;
 
     font-size:16px;
@@ -1382,7 +1436,7 @@ BOTTOM LINKS
 }
 
 .register_text a{
-    color:#fe5b29;
+    color:#009DFF;
     font-weight:600;
 }
 
@@ -1397,7 +1451,7 @@ BOTTOM LINKS
 }
 
 .back_home a:hover{
-    color:#fe5b29;
+    color:#009DFF;
 }
 
 /*=========================================================
@@ -1571,3 +1625,90 @@ SMALL MOBILE
         height: 42px;
     }
 }
+
+.footerLogo{
+
+    font-size: 25px;
+    color: white;
+}
+
+.banner-section {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.banner-section .ol-list,
+.banner-section .about_taital_box {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-section .ol-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.banner-section .ol-list li {
+    display: flex;
+    align-items: center;
+    
+}
+
+.banner-section .ol-list a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400px;
+}
+
+.banner-section .ol-list a:hover {
+    color: #009DFF;
+}
+
+.banner-section .about_taital {
+    color: #000;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.banner-section .about_text {
+    color: #000;
+    max-width: 650px;
+    line-height: 28px;
+    font-weight: 400;
+}
+.about-banner {
+    background-image: url("/images/about-banner.png");
+}
+
+.services-banner {
+    background-image: url("/images/service-banner.png");
+}
+.logo_img{
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+}
+.menu-toggle::after {
+    display: none !important;
+  }
+  
+  .menu-toggle:focus,
+  .menu-toggle:active,
+  .menu-toggle:hover {
+    box-shadow: none !important;
+  }
+
+  .list-unstyled a{
+    color: #fefefd;
+  }

@@ -148,7 +148,7 @@ navigate("/");
                   className="toggle_password"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? "Hide" : "Show"}
+                 <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
                 </span>
 
               </div>
@@ -182,7 +182,7 @@ navigate("/");
                     setShowConfirmPassword(!showConfirmPassword)
                   }
                 >
-                  {showConfirmPassword ? "Hide" : "Show"}
+                  <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
                 </span>
 
               </div>

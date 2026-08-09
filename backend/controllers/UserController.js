@@ -1,5 +1,6 @@
 const passwordValidator = require('password-validator')
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 const User = require("../models/User")
 
 // Create a schema
@@ -61,26 +62,96 @@ async function createRecord(req, res) {
         })
     }
 }
-async function getAllRecord(req,res){
-     try {
-        let data=await User.find().sort({_id:-1})
+async function getAllRecord(req, res) {
+    try {
+        let data = await User.find().sort({ _id: -1 })
         res.send({
-            status:"Done",
-            data:data
+            status: "Done",
+            data: data
         })
-     } catch (error) {
+    } catch (error) {
         console.log(error);
 
         res.status(500).send({
-            status:"Fail",
-            reason:"Internal Server Error"
+            status: "Fail",
+            reason: "Internal Server Error"
         })
-        
-     }
-}
 
+    }
+}
+async function login(req, res) {
+    try {
+        let data = await User.findOne({
+            $or: [
+                { username: req.body.username },
+                { email: req.body.username }
+            ]
+        })
+        // User not found
+        if (!data) {
+            return res.status(401).send({
+                status: "Fail",
+                reason: "Invalid Username or Password"
+            });
+        }
+        // Check password
+        let passwordMatch = await bcrypt.compare(
+            req.body.password,
+            data.password
+        );
+
+        // Password incorrect
+        if (!passwordMatch) {
+            return res.status(401).send({
+                status: "Fail",
+                reason: "Invalid Username or Password"
+            });
+        }
+
+        // Create JWT token
+        let token = jwt.sign(
+            {
+                data: {
+                    id: data._id,
+                    username: data.username,
+                    email: data.email,
+                    role: data.role
+                }
+            },
+            process.env.JWT_SECRECT_KEY,
+            {
+                expiresIn: "1d"
+            }
+        );
+
+        // Login successful
+        res.send({
+            status: "Done",
+            message: "Login Successfully",
+            token: token,
+            data: {
+                id: data._id,
+                name: data.name,
+                username: data.username,
+                email: data.email,
+                role: data.role
+            }
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).send({
+            status: "Fail",
+            reason: "Internal Server Error"
+        });
+    }
+
+}
 
 module.exports = {
     createRecord: createRecord,
-    getAllRecord:getAllRecord
+    getAllRecord: getAllRecord,
+    login:login
 }

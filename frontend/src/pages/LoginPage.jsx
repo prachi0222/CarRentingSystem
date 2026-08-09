@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -7,7 +8,9 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
@@ -29,10 +32,53 @@ export default function LoginPage() {
     setErrors(newErrors);
 
     // If there are no errors
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Login successfully");
+    //   if (Object.keys(newErrors).length === 0) {
+    //     console.log("Login successfully");
+    //   }
+
+    // Stop if validation errors exist 
+    if (Object.keys(newErrors).length !== 0) {
+      return;
+    }
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/user/login`, 
+        { username: email,
+         password: password
+         })
+         console.log("login Response:",response.data);
+
+         if(response.data.status==="Done"){
+
+          //store JWT token
+          localStorage.setItem(
+            "token",
+            response.data.token
+          )
+          //store user information
+          localStorage.setItem(
+            "user",
+            JSON.stringify(response.data.data)
+          )
+          alert("Login Successfully")
+
+          //Go to Home Page
+          navigate("/")
+         }
+         
+     } catch (error) {
+       console.log(error);
+       if(error.response){
+        setErrors({
+          login:error.response.data.reason || "Invalid email or password"
+        })
+       }
+       else{
+           setErrors({ login: "Server Error. Please try again later." });
+       }
+       
     }
   };
+
 
   return (
     <div className="login_page">
@@ -42,7 +88,7 @@ export default function LoginPage() {
         {/* LEFT SIDE */}
         <div className="login_image">
           <img
-        src="images/about-img.png"
+            src="images/about-img.png"
             alt="Car Rental"
           />
         </div>
@@ -82,31 +128,31 @@ export default function LoginPage() {
 
             {/* Password */}
             <div className="login_form_group">
-  <label>Password</label>
+              <label>Password</label>
 
-  <div className="password_field">
-    <input
-      type={showPassword ? "text" : "password"}
-      placeholder="Enter your password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      className={errors.password ? "input_error" : ""}
-    />
+              <div className="password_field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={errors.password ? "input_error" : ""}
+                />
 
-    <span
-      className="toggle_password"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? "Hide" : "Show"}
-    </span>
-  </div>
+                <span
+                  className="toggle_password"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </span>
+              </div>
 
-  {errors.password && (
-    <p className="error_message">
-      {errors.password}
-    </p>
-  )}
-</div>
+              {errors.password && (
+                <p className="error_message">
+                  {errors.password}
+                </p>
+              )}
+            </div>
 
             {/* Remember + Forgot */}
             <div className="login_options">

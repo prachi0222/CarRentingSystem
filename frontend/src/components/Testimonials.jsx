@@ -27,9 +27,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                   
                   </div>
                   <div className="col-md-6">
                     <div className="client_taital_box">
@@ -42,9 +40,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -68,9 +64,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                   
                   </div>
                   <div className="col-md-6">
                     <div className="client_taital_box">
@@ -83,9 +77,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -109,9 +101,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                   
                   </div>
                   <div className="col-md-6">
                     <div className="client_taital_box">
@@ -124,9 +114,7 @@ const Testimonials = () => {
                         distracted by the readable content of a page
                       </p>
                     </div>
-                    <div className="quick_icon">
-                      <img src="images/quick-icon.png" />
-                    </div>
+                   
                   </div>
                 </div>
               </div>

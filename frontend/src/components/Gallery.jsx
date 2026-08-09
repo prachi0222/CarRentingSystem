@@ -3,6 +3,9 @@ import React from 'react'
 const Gallery = () => {
   return (
     <>
+
+
+    
   {/* about section end */}
   <div className="search_section">
     <div className="container">

@@ -252,7 +252,7 @@ export default function RegisterPage() {
                   className="toggle_password"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? "Hide" : "Show"}
+                 <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
                 </span>
 
               </div>
@@ -287,7 +287,7 @@ export default function RegisterPage() {
                     setShowConfirmPassword(!showConfirmPassword)
                   }
                 >
-                  {showConfirmPassword ? "Hide" : "Show"}
+                  <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
                 </span>
 
               </div>

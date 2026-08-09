@@ -1,57 +1,38 @@
 import React from 'react'
+import Contact from '../components/Contact'
+import { Link } from "react-router-dom";
 
 function Contactpage() {
   return (
     <>
-    {/* contact section start */}
-    <div className="contact_section layout_padding">
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            <h1 className="contact_taital">Get In Touch</h1>
-          </div>
+ <div className="banner-section services-banner">
+        {/* Breadcrumb */}
+        <ol className="ol-list">
+          <li>
+            <Link to="/">Home</Link>
+
+            <i className="bi bi-chevron-right mx-2"></i>
+
+            <Link to="/contact">Contact Us</Link>
+          </li>
+        </ol>
+
+        {/* Banner Content */}
+        <div className="about_taital_box">
+          <h1 className="about_taital">
+            CONTACT<span style={{ color: "#009DFF" }}> US</span>
+          </h1>
+
+          <p className="about_text">
+            We are committed to providing safe, reliable, and affordable car
+            rental services. Whether you're traveling for business or leisure,
+            our modern fleet and exceptional customer support ensure a smooth
+            and comfortable journey every time.
+          </p>
         </div>
       </div>
-      <div className="container">
-        <div className="contact_section_2">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="mail_section_1">
-                <input
-                  type="text"
-                  className="mail_text"
-                  placeholder="Name"
-                  name="Name"
-                />
-                <input
-                  type="text"
-                  className="mail_text"
-                  placeholder="Email"
-                  name="Email"
-                />
-                <input
-                  type="text"
-                  className="mail_text"
-                  placeholder="Phone Number"
-                  name="Phone Number"
-                />
-                <textarea
-                  className="massage-bt"
-                  placeholder="Massage"
-                  rows={5}
-                  id="comment"
-                  name="Massage"
-                  defaultValue={""}
-                />
-                <div className="send_bt">
-                  <a href="#">Send</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+   <Contact/>
     </>
   )
 }

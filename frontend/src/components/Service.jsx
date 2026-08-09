@@ -10,8 +10,8 @@ const Service = () => {
         </div>
       </div>
       <div className="choose_section_2">
-        <div className="row">
-          <div className="col-sm-4">
+        <div className="carts-section">
+          <div className="cart">
             <div className="icon_1">
               <img src="images/icon-1.png" />
             </div>
@@ -21,7 +21,7 @@ const Service = () => {
               have{" "}
             </p>
           </div>
-          <div className="col-sm-4">
+          <div className="cart">
             <div className="icon_1">
               <img src="images/icon-2.png" />
             </div>
@@ -31,13 +31,14 @@ const Service = () => {
               have{" "}
             </p>
           </div>
-          <div className="col-sm-4">
+          <div className="cart">
             <div className="icon_1">
               <img src="images/icon-3.png" />
             </div>
             <h4 className="safety_text">Best Drivers</h4>
             <p className="ipsum_text">
               variations of passages of Lorem Ipsum available, but the majority
+              have variations of passages of Lorem Ipsum available, but the majority
               have{" "}
             </p>
           </div>
